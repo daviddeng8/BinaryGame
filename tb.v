@@ -28,18 +28,26 @@ module tb;
 	// wire ;
 
 	// Instantiate the Unit Under Test (UUT)
-	game uut ();
+	
+	reg clk;
+	wire [3:0] an;
+	wire [6:0] seg;
 
 	initial begin
 		// Initialize Inputs
-
 		// Wait 100 ns for global reset to finish
 		#100;
-		$display("hello world");
-        
+      clk = 0;
 		// Add stimulus here
-
 	end
-      
+	
+	always #5 clk = ~clk;
+	game uut (
+		.clk(clk),
+		.an(an),
+		.seg(seg)
+	);
+   
+   
 endmodule
 
