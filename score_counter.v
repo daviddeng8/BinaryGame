@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    08:46:32 03/09/2023 
+// Create Date:    09:47:24 03/09/2023 
 // Design Name: 
-// Module Name:    comparator 
+// Module Name:    score 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,25 +18,28 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module comparator(
-    // Inputs
-   clk,
-  	sw, // 8 switch -> 2^8-1 = 255
-   number,
-   // Outputs
-   is_equal
+module score_counter(
+	clk,
+	rst,
+	is_equal,
+	score
 );
-  	input clk;
-   input [7:0]   sw;
-  	input [7:0]	number;
-	
-   output reg is_equal;
-  	
-   always@ (posedge clk) begin
-        if (sw == number)
-            is_equal <= 1;
-        else
-            is_equal <= 0;
-    end
-endmodule
 
+	input clk;
+	input rst;
+	input is_equal;
+	output reg [3:0] score;
+		
+	initial begin
+		score = 0;
+	end
+	
+	always @ (posedge clk) begin
+		if (rst)
+			score <= 0;
+		else if (is_equal)
+			score <= score + 1;
+	end
+
+
+endmodule
