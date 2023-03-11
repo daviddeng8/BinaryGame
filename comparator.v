@@ -20,19 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 module comparator(
     // Inputs
-   clk,
-  	sw, // 8 switch -> 2^8-1 = 255
-   number,
-   // Outputs
-   is_equal
+    clk,
+    sw, // 8 switch -> 2^8-1 = 255
+    number,
+    // Outputs
+    is_equal
 );
   	input clk;
-   input [7:0]   sw;
+    input [7:0]   sw;
   	input [7:0]	number;
 	
-   output reg is_equal;
+    output reg is_equal;
   	
-   always@ (posedge clk) begin
+    always@ (posedge clk) begin
         if (sw == number)
             is_equal <= 1;
         else
