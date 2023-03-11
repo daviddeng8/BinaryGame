@@ -18,48 +18,39 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-// Code your design here
 module random_number(
     // Input 100 MHz clock
 	clk,
 	rst,
 	is_equal,
     // Outputs
-   randnum
+   	randnum
 );
 
-  input clk;
-  input rst;
-  input is_equal;
-  output reg [7:0] randnum; // 8 bits -> 2^8 -1 = 255 max 
+	input clk;
+  	input rst;
+  	input is_equal;
+  	output reg [7:0] randnum; // 8 bits -> 2^8 -1 = 255 max 
+
+  	reg [7:0] ctr;
   
-  reg [7:0] ctr;
-  
-  initial begin
-    ctr = 0;
-	 randnum = 0;
-  end
-  
-  always @(posedge clk) begin
-	  if (rst) begin
-		  ctr = 0;
-		  randnum = 0;
-	  end
-	  else begin
-		  ctr = ctr + 1; 
-		  if (is_equal) begin
-			 randnum = ctr;
-		  end
-		  else begin
-			 randnum = randnum;
-		  end
-	  end
-  end
-  
-  always@(*)
-  begin
-	  
-	  
-  end
+  	initial begin
+    	ctr = 0;
+	 	randnum = 0;
+  	end
+
+  	always @(posedge clk) begin
+		if (rst) begin
+			ctr <= 0;
+			randnum <= 0;
+		end
+		else begin
+			ctr <= ctr + 1; 
+			if (is_equal)
+				randnum <= ctr;
+			else
+				randnum <= randnum;
+		end
+  	end
 
 endmodule

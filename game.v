@@ -74,13 +74,6 @@ module game(
 		.game_end(game_end)
 	);
 	
-	score_counter scorer(
-		.clk(clk),
-		.rst(btnR),
-		.is_equal(is_equal),
-		.score(score)
-	);
-	
 	comparator compare(
 		.clk(clk),
 		.sw(sw),
@@ -88,6 +81,13 @@ module game(
 		.is_equal(is_equal)
 	);
 	
+	score_counter scorer(
+		.clk(clk),
+		.rst(btnR),
+		.is_equal(is_equal),
+		.score(score)
+	);
+
 	number_display num_display(
 		.display_clk(display_clk),
 		.number(randnum),

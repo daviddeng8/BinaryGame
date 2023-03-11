@@ -47,7 +47,6 @@ module timer_display(
 		else if (timer_anode == 0) begin
 			LED_BCD = (time_remaining / 10); 
 		end
-		
     end
 	 
     // Cathode patterns of the 7-segment LED display 
@@ -63,11 +62,8 @@ module timer_display(
         4'b0111: timer_seg = 7'b0111000; // "7" 
         4'b1000: timer_seg = 7'b1111111; // "8"  
         4'b1001: timer_seg = 7'b1111101; // "9" 
-        4'b1010: timer_seg = 7'b1111110; // "-" 
         default: timer_seg = 7'b0000000; // ""
         endcase
-		  
-		  // timer_seg = ~timer_seg;
     end
 	
 
