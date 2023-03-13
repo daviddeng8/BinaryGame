@@ -32,13 +32,13 @@ module timer(
 	output reg game_end;
 	
 	initial begin
-		time_remaining = 20;
+		time_remaining = 40;
 		game_end = 0;
 	end
 	
 	always @ (posedge timer_clk) begin
 		if (rst)
-			time_remaining = 20;
+			time_remaining = 40;
 		else if (time_remaining > 0)
 			time_remaining = time_remaining - 1;
 

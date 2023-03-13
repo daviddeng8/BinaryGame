@@ -53,6 +53,15 @@ module game(
 	
 	wire game_end;
 	
+	wire rst = btnR;
+	
+	/*
+	debouncer debounce(
+		.pb_1(btnR),
+		.clk(clk),
+		.pb_out(rst)
+	);*/
+	
 	clock_divider clk_div(
 		.clk(clk),
 		.timer_clk(timer_clk),
@@ -61,7 +70,7 @@ module game(
 	
 	random_number rand(
 		.clk(clk),
-		.rst(btnR),
+		.rst(rst),
 		.is_equal(is_equal),
 		.randnum(randnum)
 	);
@@ -69,15 +78,16 @@ module game(
 	timer time_ctr(
 		.clk(clk),
 		.timer_clk(timer_clk),
-		.rst(btnR),
+		.rst(rst),
 		.time_remaining(time_remaining),
 		.game_end(game_end)
 	);
 	
 	score_counter scorer(
 		.clk(clk),
-		.rst(btnR),
+		.rst(rst),
 		.is_equal(is_equal),
+		.game_end(game_end),
 		.score(score)
 	);
 	

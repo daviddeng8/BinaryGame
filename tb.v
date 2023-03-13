@@ -32,20 +32,28 @@ module tb;
 	reg clk;
 	wire [3:0] an;
 	wire [6:0] seg;
+	reg [7:0] sw;
+	// reg btnR;
+
 
 	initial begin
 		// Initialize Inputs
 		// Wait 100 ns for global reset to finish
 		#100;
       clk = 0;
-		// Add stimulus here
+		sw = 8'b00000001;
+		// btnR = 0;
 	end
 	
 	always #5 clk = ~clk;
+	// always #100000000 btnR = ~btnR;
+	always #1000000000 sw = 8'b00000101;
 	game uut (
 		.clk(clk),
 		.an(an),
-		.seg(seg)
+		.seg(seg),
+		// .btnR(btnR),
+		.sw(sw)
 	);
    
    

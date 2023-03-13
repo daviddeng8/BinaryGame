@@ -31,7 +31,11 @@ module comparator(
   	input [7:0]	number;
 	
    output reg is_equal;
-  	
+	
+	initial begin
+		is_equal = 0;
+	end
+	
    always@ (posedge clk) begin
         if (sw == number)
             is_equal <= 1;

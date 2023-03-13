@@ -22,12 +22,14 @@ module score_counter(
 	clk,
 	rst,
 	is_equal,
+	game_end,
 	score
 );
 
 	input clk;
 	input rst;
 	input is_equal;
+	input game_end;
 	output reg [3:0] score;
 		
 	initial begin
@@ -35,10 +37,13 @@ module score_counter(
 	end
 	
 	always @ (posedge clk) begin
-		if (rst)
+		if (game_end)
+			score <= score;
+		else if (rst)
 			score <= 0;
 		else if (is_equal)
 			score <= score + 1;
+		
 	end
 
 
